@@ -34,7 +34,7 @@ it('Ship is able to set sail', () => {
 })
 
 it('ship is able to dock at port', () => {
-    ship.dock(newYork);
+    ship.dock();
     expect(ship.currentPort).toBe(newYork);
 });
 
