@@ -1,15 +1,15 @@
-const Itinery = require('../src/itinery.js');
+const Itinerary = require('../src/itinery.js');
 
-let itinery = null;
+let itinerary = null;
 
 beforeEach(() => {
-    itinery = new Itinery();
+    itinerary = new Itinerary();
 });
 
-it('creates a new itinery object', () => {
-    expect(itinery).toBeInstanceOf(Object);
+it('creates a new itinerary object', () => {
+    expect(itinerary).toBeInstanceOf(Object);
 });
 
 it('has a list of ports', () =>{
-    expect(itinery.ports).toEqual([]);
+    expect(itinerary.ports).toEqual([]);
 });
