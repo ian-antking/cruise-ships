@@ -1,9 +1,11 @@
 Ship = function(port) {
     this.currentPort = port;
+    this.previousPort= null;
     
 };
 
 Ship.prototype.sail = function() {
+    this.previousPort = this.currentPort;
     this.currentPort = null;
 };
 
