@@ -1,5 +1,6 @@
-Ship = function(port) {
-    this.currentPort = port;
+Ship = function(itinerary) {
+    this.itinerary = itinerary;
+    this.currentPort = this.itinerary.ports[0];
     this.previousPort= null;
     
 };

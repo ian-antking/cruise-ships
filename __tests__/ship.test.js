@@ -1,18 +1,26 @@
 const Ship = require('../src/ship.js');
 const Port = require('../src/port.js');
+const Itinerary = require('../src/itinery.js');
 
 let ship = null;
 let london = null;
 let newYork = null;
+let itinerary = null;
 
 beforeEach(() => {
     london = new Port('London');
     newYork = new Port('New York');
-    ship = new Ship(london);
+    itinerary = new Itinerary();
+    itinerary.ports = [london, newYork];
+    ship = new Ship(itinerary);
 });
 
-it('Ship is an object with a starting port property', () => {
-    expect(ship.currentPort.name).toBe('London');
+it('has an itinerary property', () => {
+    expect(ship.itinerary).toEqual(itinerary);
+});
+
+it('Ship is an object with a current port property', () => {
+    expect(ship.currentPort).toBe(london);
 });
 
 it('has a previous port property at construction', () => {
