@@ -19,3 +19,8 @@ it('Ship is able to set sail', () => {
     ship.sail();
     expect(ship.startingPort).toBeFalsy();
 })
+
+it('ship is able to dock at port', () => {
+    ship.dock(newYork);
+    expect(ship.startingPort).toBe(newYork);
+});
