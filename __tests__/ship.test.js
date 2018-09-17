@@ -1,13 +1,18 @@
 const Ship = require('../src/ship.js');
+const Port = require('../src/port.js');
 
 let ship = null;
+let london = null;
+let newYork = null;
 
 beforeEach(() => {
-    ship = new Ship('London');
+    london = new Port('London');
+    newYork = new Port('New York');
+    ship = new Ship(london);
 });
 
 it('Ship is an object with a starting port property', () => {
-    expect(ship.startingPort).toBe('London');
+    expect(ship.startingPort.name).toBe('London');
 });
 
 it('Ship is able to set sail', () => {
