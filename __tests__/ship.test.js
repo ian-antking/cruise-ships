@@ -18,9 +18,14 @@ it('Ship is an object with a starting port property', () => {
 it('Ship is able to set sail', () => {
     ship.sail();
     expect(ship.currentPort).toBeFalsy();
+    expect(ship.previousPort).toBe(london);
 })
 
 it('ship is able to dock at port', () => {
     ship.dock(newYork);
     expect(ship.currentPort).toBe(newYork);
+});
+
+it('has a previousPorts properties', () => {
+    expect(ship.previousPort).toBeFalsy();
 });
