@@ -12,15 +12,15 @@ beforeEach(() => {
 });
 
 it('Ship is an object with a starting port property', () => {
-    expect(ship.startingPort.name).toBe('London');
+    expect(ship.currentPort.name).toBe('London');
 });
 
 it('Ship is able to set sail', () => {
     ship.sail();
-    expect(ship.startingPort).toBeFalsy();
+    expect(ship.currentPort).toBeFalsy();
 })
 
 it('ship is able to dock at port', () => {
     ship.dock(newYork);
-    expect(ship.startingPort).toBe(newYork);
+    expect(ship.currentPort).toBe(newYork);
 });
