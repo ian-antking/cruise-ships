@@ -1,10 +1,10 @@
 Ship = function(port) {
     this.startingPort = port;
-    this.location = port;
+    
 };
 
-Ship.prototype.sail = function(destination) {
-    this.location = destination;
+Ship.prototype.sail = function() {
+    this.startingPort = null;
 };
 
 module.exports = Ship;
