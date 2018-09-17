@@ -9,3 +9,7 @@ beforeEach(() => {
 it('creates a new itinery object', () => {
     expect(itinery).toBeInstanceOf(Object);
 });
+
+it('has a list of ports', () =>{
+    expect(itinery.ports).toEqual([]);
+});
