@@ -39,3 +39,9 @@ it('ship is able to dock at port', () => {
     expect(ship.currentPort).toBe(newYork);
 });
 
+it('throws an error if ship tries to sail past it\'s itinerary', () => {
+    ship.sail();
+    ship.dock();
+    expect(ship.sail).toThrow(Error('Ship has completed itinerary'));
+});
+
