@@ -34,12 +34,12 @@ describe('Ship objet', () => {
     ship = new Ship(itinerary);
   });
 
-  function sailDock(ship, number) {
+  function sailDock(vessel, number) {
     for (let journey = 0; journey < number; journey += 1) {
-      ship.sail();
-      ship.dock();
+      vessel.sail();
+      vessel.dock();
     }
-  };
+  }
 
   it('has an itinerary property', () => {
     expect(ship.itinerary).toEqual(itinerary);
