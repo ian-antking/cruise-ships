@@ -1,3 +1,4 @@
+/* globals jest describe it expect */
 const Port = require('../src/port.js');
 
 
@@ -16,7 +17,7 @@ it('Creates a new port', () => {
 it('Port has a name', () => {
   expect(newYork.name).toBe('New York');
 });
-/* globals jest describe it expect */
+
 it('has a ships propery', () => {
   expect(newYork.ships).toEqual([]);
 });

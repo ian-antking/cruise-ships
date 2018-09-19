@@ -7,6 +7,7 @@ let itinerary = null;
 let london = null;
 let newYork = null;
 let shanghai = null;
+
 describe('Ship object', () => {
   function sailDock(vessel, number) {
     for (let journey = 0; journey < number; journey += 1) {
@@ -81,7 +82,6 @@ describe('Ship object', () => {
       expect(ship.currentPort).toBe(shanghai);
     });
   });
-
 
   describe('stormy weather', () => {
     beforeAll(() => {
