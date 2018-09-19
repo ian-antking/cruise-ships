@@ -28,6 +28,12 @@ it('has a ships propery', () => {
 });
 
 it('addShip adds a ship to the port.ships propery', () => {
+    london.addShip(titanic);
+    expect(london.ships).toEqual([titanic]);
+});
+
+it('removeShip removes ship from the port.ships propery', () => {
     newYork.addShip(titanic);
-    expect(newYork.ships).toEqual([titanic]);
+    london.removeShip(titanic);
+    expect(london.ships).toEqual([]);
 });
