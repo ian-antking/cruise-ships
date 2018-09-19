@@ -6,14 +6,21 @@ let ship = null;
 let london = null;
 let newYork = null;
 let itinerary = null;
+let shanghai = null;
 
 beforeEach(() => {
     london = new Port('London');
     newYork = new Port('New York');
+    shanghai = new Port('Shanghai')
     itinerary = new Itinerary();
-    itinerary.ports = [london, newYork];
+    itinerary.ports = [london, newYork, shanghai];
     ship = new Ship(itinerary);
 });
+
+function sailDock(ship){
+    ship.sail();
+    ship.dock();
+}
 
 it('has an itinerary property', () => {
     expect(ship.itinerary).toEqual(itinerary);
@@ -34,14 +41,17 @@ it('Ship is able to set sail', () => {
 })
 
 it('ship is able to dock at port', () => {
-    ship.sail();
-    ship.dock();
+    sailDock(ship);
     expect(ship.currentPort).toBe(newYork);
+    sailDock(ship);
+    expect(ship.currentPort).toBe(shanghai);
 });
 
 it('throws an error if ship tries to sail past it\'s itinerary', () => {
-    ship.sail();
-    ship.dock();
+    for(let journey = 0; journey < itinerary.ports.length; journey += 1){
+        ship.sail();
+        ship.dock();  
+    }
     expect(ship.sail).toThrow(Error('Ship has completed itinerary'));
 });
 
