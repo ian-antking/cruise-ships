@@ -4,15 +4,22 @@ const Itinerary = require('../src/itinery.js');
 
 let newYork = null;
 let london = null;
+let manilla = null;
+let honolulu = null;
 let  atlanticCrossing = null;
 let titanic = null;
 
 beforeEach(() => {
     newYork = new Port('New York');
     london = new Port('London');
+    manilla = new Port('Manilla');
+    honolulu = new Port('Honalulu') 
     atlanticCrossing =  new Itinerary();
+    pacificCruise = new Itinerary();
     atlanticCrossing.ports = [london, newYork];
+    pacificCruise.ports = [manilla, honolulu];
     titanic = new Ship(atlanticCrossing);
+    gigantic = new Ship(pacificCruise);
 });
 
 it('Creates a new port', () => {
@@ -28,8 +35,8 @@ it('has a ships propery', () => {
 });
 
 it('addShip adds a ship to the port.ships property', () => {
-    london.addShip(titanic);
-    expect(london.ships).toEqual([titanic]);
+    manilla.addShip(titanic);
+    expect(manilla.ships).toContain(titanic);
 });
 
 it('removeShip removes ship from the port.ships propery', () => {

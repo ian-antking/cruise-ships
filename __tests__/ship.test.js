@@ -31,7 +31,7 @@ it('Ship is an object with a current port property', () => {
 });
 
 it('ship gets added to port.ships on instantiation', () => {
-    expect(london.ships).toContain(ship);
+    expect(ship.currentPort.ships).toContain(ship);
 });
 
 it('has a previous port property at construction', () => {
