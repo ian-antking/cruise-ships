@@ -12,8 +12,7 @@ beforeEach(() => {
     london = new Port('London');
     newYork = new Port('New York');
     shanghai = new Port('Shanghai')
-    itinerary = new Itinerary();
-    itinerary.ports = [london, newYork, shanghai];
+    itinerary = new Itinerary([london, newYork, shanghai]);
     ship = new Ship(itinerary);
 });
 

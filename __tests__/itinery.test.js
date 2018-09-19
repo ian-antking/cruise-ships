@@ -1,9 +1,10 @@
 const Itinerary = require('../src/itinery.js');
 
 let itinerary = null;
+const ports = [];
 
 beforeEach(() => {
-    itinerary = new Itinerary();
+    itinerary = new Itinerary(ports);
 });
 
 it('creates a new itinerary object', () => {
