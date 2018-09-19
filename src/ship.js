@@ -1,9 +1,11 @@
 const Ship = function(itinerary) {
     this.itinerary = itinerary;
     this.currentPort = this.itinerary.ports[0];
+    //this.currentPort.addShip(this);
     this.tripLength = this.itinerary.ports.length;
     this.previousPort = null;
     this.portIndex = 0;
+    
 };
 
 Ship.prototype.sail = function() {

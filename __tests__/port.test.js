@@ -27,7 +27,7 @@ it('has a ships propery', () => {
     expect(newYork.ships).toEqual([]);
 });
 
-it('addShip adds a ship to the port.ships propery', () => {
+it('addShip adds a ship to the port.ships property', () => {
     london.addShip(titanic);
     expect(london.ships).toEqual([titanic]);
 });
