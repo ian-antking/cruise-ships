@@ -9,7 +9,10 @@ const Ship = function Ship(itinerary) {
 };
 
 Ship.prototype.sail = function sail() {
-  if (this.portIndex === this.tripLength) {
+  const weather = Math.random();
+  if (weather > 0.4) {
+    throw new Error('The seas are too stormy!');
+  } else if (this.portIndex === this.tripLength) {
     throw new Error('Ship has completed itinerary');
   } else {
     this.previousPort = this.currentPort;
