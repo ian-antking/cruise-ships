@@ -1,5 +1,5 @@
-const Itinerary = function(ports){
-    this.ports = ports;
+const Itinerary = function Itinerary(ports) {
+  this.ports = ports;
 };
 
 module.exports = Itinerary;
