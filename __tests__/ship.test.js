@@ -1,5 +1,5 @@
 const Ship = require('../src/ship.js');
-const Itinerary = require('../src/itinery.js');
+
 
 let ship = null;
 let port = null;
@@ -29,7 +29,7 @@ beforeEach(() => {
         ships: [],
     };
     
-    itinerary = new Itinerary([london, newYork, shanghai]);
+    itinerary = {ports:[london, newYork, shanghai]};
     ship = new Ship(itinerary);
 });
 
