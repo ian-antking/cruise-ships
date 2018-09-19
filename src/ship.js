@@ -16,6 +16,7 @@ Ship.prototype.sail = function() {
     }else{
         this.previousPort = this.currentPort;
         this.currentPort = null;
+        this.previousPort.removeShip(this);
     };
 };
 
