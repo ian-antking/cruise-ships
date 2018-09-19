@@ -42,7 +42,7 @@ it('Ship is able to set sail', () => {
     ship.sail();
     expect(ship.currentPort).toBeFalsy();
     expect(ship.previousPort).toBe(london);
-    //expect(ship.previousPort.ships.indexOf(ship).toBe(-1));
+    expect(ship.previousPort.ships.indexOf(ship)).toBe(-1);
 })
 
 it('ship is able to dock at port', () => {
