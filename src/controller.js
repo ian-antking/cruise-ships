@@ -4,10 +4,12 @@ const Controller = function Controller() {
 
 Controller.prototype.initialiseSea = function initialiseSea() {
   const viewport = document.querySelector('#viewport');
-  const backgrounds = ["url('./images/water0.png')", "url('./images/water1.png')"];
+  const backgrounds = ['./images/water0.png', './images/water1.png'];
   let backgroundIndex = 0;
+  let backgroundPosition = 0;
   setInterval(() => {
-    viewport.style.backgroundImage = backgrounds[backgroundIndex % backgrounds.length];
+    backgroundPosition = backgroundIndex % backgrounds.length;
+    viewport.style.backgroundImage = `url(${backgrounds[backgroundPosition]})`;
     backgroundIndex += 1;
   }, 1000);
 };
