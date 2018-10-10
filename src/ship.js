@@ -11,7 +11,7 @@
 
   Ship.prototype.sail = function sail() {
     const weather = Math.random();
-    if (weather > 0.4) {
+    if (weather > 1) {
       throw new Error('The seas are too stormy!');
     } else if (this.portIndex === this.tripLength) {
       throw new Error('Ship has completed itinerary');

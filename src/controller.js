@@ -1,6 +1,11 @@
 (function exportController() {
-  const Controller = function Controller() {
+  const Controller = function Controller(ship) {
+    this.ship = ship;
     this.initialiseSea();
+
+    document.querySelector('#sailButton').addEventListener('click', () => {
+      this.setSail();
+    });
   };
 
   Controller.prototype.initialiseSea = function initialiseSea() {
@@ -29,15 +34,38 @@
     });
   };
 
-  Controller.prototype.renderShip = function renderShip(ship) {
+  Controller.prototype.renderShip = function renderShip() {
     const viewport = document.querySelector('#viewport');
     const shipSprite = document.createElement('div');
     shipSprite.id = 'ship';
-    const portIndex = ship.itinerary.ports.indexOf(ship.currentPort);
+    const portIndex = this.ship.itinerary.ports.indexOf(this.ship.currentPort);
     const currentPortElement = document.querySelector(`[data-port-index='${portIndex}']`);
     shipSprite.style.top = `${currentPortElement.offsetTop + 32}px`;
     shipSprite.style.left = `${currentPortElement.offsetLeft - 32}px`;
     viewport.appendChild(shipSprite);
+  };
+
+  Controller.prototype.setSail = function setSail() {
+    const ship = this.ship;
+    console.log(ship);
+    const currentPortIndex = ship.itinerary.ports.indexOf(ship.currentPort);
+    const nextPortIndex = currentPortIndex + 1;
+    const nextPortElement = document.querySelector(`[data-port-index='${nextPortIndex}']`);
+    if (!nextPortElement) {
+      return alert('End of the line!');
+    }
+    const shipElement = document.querySelector('#ship');
+    console.log(nextPortElement);
+    ship.sail();
+    const sailInterval = setInterval(()=>{
+      const shipLeft = parseInt(shipElement.style.left, 10);
+      if (shipLeft === (nextPortElement.offsetLeft - 32)) {
+        ship.dock();
+        clearInterval(sailInterval);
+      } else {
+        shipElement.style.left = `${shipLeft + 1}px`;
+      }
+    }, 20);
   };
 
   if (typeof module !== 'undefined' && module.exports) {

@@ -19,13 +19,15 @@
     <script src="./src/itinery.js"></script>
     <script src="./src/ship.js"></script>
     <script>
-        let controller = new Controller();
+        
+        
         let london = new Port('London');
         let newYork = new Port('New York');
         let shanghai = new Port('Shanghai');
         let worldTour = new Itinerary([london, newYork, shanghai]);
-        controller.renderPorts(worldTour.ports);
         let ssAnne = new Ship(worldTour);
+        let controller = new Controller(ssAnne);
+        controller.renderPorts(worldTour.ports);
         controller.renderShip(ssAnne);
     </script>
 </body>
