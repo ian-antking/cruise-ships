@@ -10,13 +10,12 @@
 </head>
 <body>
     <div id="viewport">
-        <div id ='ports'>
-            
-        </div>
+        <div id='ports'></div>
     </div>   
     <script src="./src/controller.js"></script> 
     <script src="./src/port.js"></script>
     <script src="./src/itinery.js"></script>
+    <script src="./src/ship.js"></script>
     <script>
         let controller = new Controller();
         let london = new Port('London');
@@ -24,6 +23,8 @@
         let shanghai = new Port('Shanghai');
         let worldTour = new Itinerary([london, newYork, shanghai]);
         controller.renderPorts(worldTour.ports);
+        let ssAnne = new Ship(worldTour);
+        controller.renderShip(ssAnne);
     </script>
 </body>
 </html>
