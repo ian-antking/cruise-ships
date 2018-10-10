@@ -15,6 +15,21 @@
     }, 1000);
   };
 
+  Controller.prototype.renderPorts = function renderPorts(ports) {
+    const portsElement = document.querySelector('#ports');
+    portsElement.style.width = '0px';
+    ports.forEach((port, index) => {
+      const newPort = document.createElement('div');
+      newPort.classList.add('port');
+      newPort.dataset.name = port.name;
+      newPort.dataset.portIndex = index;
+      let portsWidth = parseInt(portsElement.style.width, 10);
+      portsElement.style.width = `${portsWidth += 256}px`;
+      portsElement.appendChild(newPort);
+      console.log(newPort);
+    });
+  };
+
   if (typeof module !== 'undefined' && module.exports) {
     module.exports = Controller;
   } else {

@@ -9,10 +9,21 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div id="viewport"></div>   
+    <div id="viewport">
+        <div id ='ports'>
+            
+        </div>
+    </div>   
     <script src="./src/controller.js"></script> 
-    <script>let controller = new Controller()</script>
     <script src="./src/port.js"></script>
     <script src="./src/itinery.js"></script>
+    <script>
+        let controller = new Controller();
+        let london = new Port('London');
+        let newYork = new Port('New York');
+        let shanghai = new Port('Shanghai');
+        let worldTour = new Itinerary([london, newYork, shanghai]);
+        controller.renderPorts(worldTour.ports);
+    </script>
 </body>
 </html>
