@@ -24,7 +24,8 @@
         let london = new Port('London');
         let newYork = new Port('New York');
         let shanghai = new Port('Shanghai');
-        let worldTour = new Itinerary([london, newYork, shanghai]);
+        let perth = new Port('Perth');
+        let worldTour = new Itinerary([london, newYork, shanghai, perth]);
         let ssAnne = new Ship(worldTour);
         let controller = new Controller(ssAnne);
         controller.renderPorts(worldTour.ports);

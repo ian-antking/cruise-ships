@@ -54,9 +54,11 @@
     }
     const shipElement = document.querySelector('#ship');
     ship.sail();
+    this.renderMessage(`Now leaving ${ship.itinerary.ports[currentPortIndex].name}.`);
     const sailInterval = setInterval(()=>{
       const shipLeft = parseInt(shipElement.style.left, 10);
       if (shipLeft === (nextPortElement.offsetLeft - 32)) {
+        this.renderMessage(`Now arriving at ${ship.itinerary.ports[nextPortIndex].name}.`)
         ship.dock();
         clearInterval(sailInterval);
       } else {
