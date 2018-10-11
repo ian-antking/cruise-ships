@@ -70,6 +70,8 @@
   Controller.prototype.renderMessage = function renderMessage(message) {
     const messageBox = document.createElement('div');
     messageBox.id = 'message';
+    messageBox.innerHTML += message;
+    this.viewport.appendChild(messageBox);
   };
 
   if (typeof module !== 'undefined' && module.exports) {
