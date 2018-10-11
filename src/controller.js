@@ -9,6 +9,12 @@
     });
   };
 
+  Controller.prototype = {
+    get currentPortIndex() {
+      return this.ship.itinerary.ports.indexOf(this.ship.currentPort);
+    }
+  };
+
   Controller.prototype.initialiseSea = function initialiseSea() {
     const backgrounds = ['./images/water0.png', './images/water1.png'];
     let backgroundIndex = 0;
@@ -42,24 +48,35 @@
     shipSprite.style.top = `${currentPortElement.offsetTop + 32}px`;
     shipSprite.style.left = `${currentPortElement.offsetLeft - 32}px`;
     this.viewport.appendChild(shipSprite);
+    this.renderHud(this.ship.itinerary.ports[this.currentPortIndex].name, this.ship.itinerary.ports[this.currentPortIndex + 1].name);
   };
 
   Controller.prototype.setSail = function setSail() {
     const ship = this.ship;
-    const currentPortIndex = ship.itinerary.ports.indexOf(ship.currentPort);
-    const nextPortIndex = currentPortIndex + 1;
+    let nextPortIndex = this.currentPortIndex + 1;
     const nextPortElement = document.querySelector(`[data-port-index='${nextPortIndex}']`);
     if (!nextPortElement) {
       return this.renderMessage('End of the line!');
     }
+    let currentPortName = ship.itinerary.ports[this.currentPortIndex].name;
+    let nextPortName = ship.itinerary.ports[nextPortIndex].name;
     const shipElement = document.querySelector('#ship');
+    this.renderMessage(`Now leaving ${currentPortName}.`);
     ship.sail();
-    this.renderMessage(`Now leaving ${ship.itinerary.ports[currentPortIndex].name}.`);
-    const sailInterval = setInterval(()=>{
+    this.renderHud('', nextPortName);
+    const sailInterval = setInterval(() => {
       const shipLeft = parseInt(shipElement.style.left, 10);
       if (shipLeft === (nextPortElement.offsetLeft - 32)) {
-        this.renderMessage(`Now arriving at ${ship.itinerary.ports[nextPortIndex].name}.`)
+        this.renderMessage(`Now arriving at ${nextPortName}.`);
         ship.dock();
+        currentPortName = ship.itinerary.ports[this.currentPortIndex].name;
+        nextPortIndex += 1;
+        if (nextPortIndex >= ship.itinerary.ports.length) {
+          nextPortName = 'End of service';
+        } else {
+          nextPortName = ship.itinerary.ports[nextPortIndex].name;
+        };
+        this.renderHud(currentPortName, nextPortName);
         clearInterval(sailInterval);
       } else {
         shipElement.style.left = `${shipLeft + 1}px`;
@@ -76,6 +93,14 @@
     setTimeout(() => {
       this.viewport.removeChild(messageBox);
     }, 2000);
+  };
+
+  Controller.prototype.renderHud = function renderHud(currentPortName, nextPortName) {
+    const currentPortHud = document.getElementById('current-port');
+    const nextPortHud = document.getElementById('next-port');
+
+    currentPortHud.innerHTML = `Current Port: ${currentPortName}`;
+    nextPortHud.innerHTML = `Next Port: ${nextPortName}`;
   };
 
   if (typeof module !== 'undefined' && module.exports) {
