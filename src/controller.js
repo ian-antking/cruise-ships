@@ -1,6 +1,7 @@
 (function exportController() {
   const Controller = function Controller(ship) {
     this.ship = ship;
+    this.viewport = document.querySelector('#viewport');
     this.initialiseSea();
 
     document.querySelector('#sailButton').addEventListener('click', () => {
@@ -9,13 +10,12 @@
   };
 
   Controller.prototype.initialiseSea = function initialiseSea() {
-    const viewport = document.querySelector('#viewport');
     const backgrounds = ['./images/water0.png', './images/water1.png'];
     let backgroundIndex = 0;
     let backgroundPosition = 0;
     setInterval(() => {
       backgroundPosition = backgroundIndex % backgrounds.length;
-      viewport.style.backgroundImage = `url(${backgrounds[backgroundPosition]})`;
+      this.viewport.style.backgroundImage = `url(${backgrounds[backgroundPosition]})`;
       backgroundIndex += 1;
     }, 1000);
   };
@@ -35,14 +35,13 @@
   };
 
   Controller.prototype.renderShip = function renderShip() {
-    const viewport = document.querySelector('#viewport');
     const shipSprite = document.createElement('div');
     shipSprite.id = 'ship';
     const portIndex = this.ship.itinerary.ports.indexOf(this.ship.currentPort);
     const currentPortElement = document.querySelector(`[data-port-index='${portIndex}']`);
     shipSprite.style.top = `${currentPortElement.offsetTop + 32}px`;
     shipSprite.style.left = `${currentPortElement.offsetLeft - 32}px`;
-    viewport.appendChild(shipSprite);
+    this.viewport.appendChild(shipSprite);
   };
 
   Controller.prototype.setSail = function setSail() {
@@ -66,6 +65,11 @@
         shipElement.style.left = `${shipLeft + 1}px`;
       }
     }, 20);
+  };
+
+  Controller.prototype.renderMessage = function renderMessage(message) {
+    const messageBox = document.createElement('div');
+    messageBox.id = 'message';
   };
 
   if (typeof module !== 'undefined' && module.exports) {
