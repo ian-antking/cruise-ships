@@ -54,7 +54,6 @@
       return alert('End of the line!');
     }
     const shipElement = document.querySelector('#ship');
-    console.log(nextPortElement);
     ship.sail();
     const sailInterval = setInterval(()=>{
       const shipLeft = parseInt(shipElement.style.left, 10);
@@ -72,6 +71,10 @@
     messageBox.id = 'message';
     messageBox.innerHTML += message;
     this.viewport.appendChild(messageBox);
+
+    setTimeout(() => {
+      this.viewport.removeChild(messageBox);
+    }, 2000);
   };
 
   if (typeof module !== 'undefined' && module.exports) {
