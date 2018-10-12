@@ -4,14 +4,20 @@ html {
 
 body {
     height: 100%;
+    background-color: black;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: black;
 
 }
 
 #viewport {
+    width: 640px;
+    height: 256px;
+    position: relative;
+}
+
+#sea{
     width: 640px;
     height: 256px;
     position: relative;
@@ -44,6 +50,7 @@ body {
     background-color: #FB3640;
     border-bottom: 4px solid #d8040f;
     color: white;
+    cursor: pointer;
     font-family: inherit;
     padding: 10px 20px;
     position: absolute;
@@ -53,33 +60,35 @@ body {
     font-family: 'Press Start 2P', cursive;
   }
 
-  #sailButton:hover {
-      background-color: #d8040f; 
-  }
+#sailButton:hover {
+    background-color: #d8040f; 
+}
 
-  #sailButton:focus {
+#sailButton:focus {
     background-color: #d8040f;
     border-bottom-width: 0;
     padding-top: 14px;
-  }
+}
   
-  #message {
+#message {
+    width: 100%;
     padding: 16px;
     font-family: 'Press Start 2P', cursive;
     position: absolute;
-    width: 100%;
     bottom: 0;
+    left: 0;
     border-top: 3px solid black;
     background-color: white;
-  }
+    overflow: hidden;
+}
 
-  #hud { 
+#hud { 
     padding: 16px;
     color: white;
     font-family: 'Press Start 2P', cursive;
     position: absolute;
-    top: 0;
-    right: 0;
-  }
+    top: 16px;
+    right: 16px;
+}
   
   

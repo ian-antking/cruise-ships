@@ -2,6 +2,7 @@
   const Controller = function Controller(ship) {
     this.ship = ship;
     this.viewport = document.querySelector('#viewport');
+    this.sea = document.querySelector('#sea');
     this.initialiseSea();
 
     document.querySelector('#sailButton').addEventListener('click', () => {
@@ -21,7 +22,7 @@
     let backgroundPosition = 0;
     setInterval(() => {
       backgroundPosition = backgroundIndex % backgrounds.length;
-      this.viewport.style.backgroundImage = `url(${backgrounds[backgroundPosition]})`;
+      this.sea.style.backgroundImage = `url(${backgrounds[backgroundPosition]})`;
       backgroundIndex += 1;
     }, 1000);
   };
@@ -47,7 +48,7 @@
     const currentPortElement = document.querySelector(`[data-port-index='${portIndex}']`);
     shipSprite.style.top = `${currentPortElement.offsetTop + 32}px`;
     shipSprite.style.left = `${currentPortElement.offsetLeft - 32}px`;
-    this.viewport.appendChild(shipSprite);
+    this.sea.appendChild(shipSprite);
     this.renderHud(this.ship.itinerary.ports[this.currentPortIndex].name, this.ship.itinerary.ports[this.currentPortIndex + 1].name);
   };
 
